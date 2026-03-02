@@ -1,0 +1,45 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --color-coffee-dark: #FFFFFF;
+    --color-coffee-muted: #F8F8F8;
+    --color-gold: #000000;
+    --color-cream: #1A1A1A;
+    --color-accent: #E0E0E0;
+
+    --font-heading: "Playfair Display", serif;
+    --font-body: "Inter", sans-serif;
+}
+
+@layer base {
+    body {
+        @apply bg-coffee-dark text-cream font-body antialiased;
+    }
+}
+
+@layer components {
+    .glass-card {
+        @apply bg-black/5 backdrop-blur-md border border-black/10 rounded-2xl p-6 shadow-xl;
+    }
+
+    .promo-card {
+        @apply bg-gradient-to-br from-black/5 to-transparent border-2 border-black/10 rounded-2xl p-6 relative overflow-hidden;
+    }
+
+    .btn-gold {
+        @apply px-6 py-2 bg-gold text-coffee-dark font-bold rounded-lg hover:bg-gold/80 transition-all duration-300 shadow-lg shadow-black/10;
+    }
+
+    .menu-category-title {
+        @apply font-heading text-3xl text-gold mb-6 border-b border-black/10 pb-2;
+    }
+
+    .product-item {
+        @apply flex items-start space-x-4 p-4 rounded-xl hover:bg-black/5 transition-colors duration-200 border border-transparent hover:border-black/5;
+    }
+}
