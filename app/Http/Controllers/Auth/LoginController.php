@@ -24,14 +24,14 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if (Auth::user()->isAdmin()) {
-                return redirect()->intended('/admin');
+                return redirect('/admin');
             }
 
             if (Auth::user()->isOwner()) {
-                return redirect()->intended('/owner');
+                return redirect('/owner');
             }
 
-            return redirect()->intended('/cashier');
+            return redirect('/cashier');
         }
 
         return back()->withErrors([

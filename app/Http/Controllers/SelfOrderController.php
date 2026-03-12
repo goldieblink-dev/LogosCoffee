@@ -20,9 +20,9 @@ class SelfOrderController extends Controller
     public function storeCustomerInfo(Request $request)
     {
         $request->validate([
-            'table_number' => 'required',
+            'table_number' => 'required|string|regex:/^[0-9]+$/',
             'customer_name' => 'required|string|max:255',
-            'customer_phone' => 'nullable|string',
+            'customer_phone' => 'required|string|regex:/^[0-9]+$/',
         ]);
 
         Session::put('customer', $request->only('table_number', 'customer_name', 'customer_phone'));

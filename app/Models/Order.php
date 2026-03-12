@@ -24,11 +24,10 @@ class Order extends Model
     public function getStatusLabelAttribute()
     {
         return match ($this->status) {
-                'pending' => 'Belum Dibayar',
-                'paid' => 'Belum Dibuat',
+                'paid'       => 'Belum Dibuat',
                 'processing' => 'Sedang Dibuat',
-                'completed' => 'Dibuat',
-                default => $this->status,
+                'completed'  => 'Sudah Dibuat',
+                default      => $this->status,
             };
     }
 

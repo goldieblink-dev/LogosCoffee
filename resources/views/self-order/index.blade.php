@@ -1,307 +1,125 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Self Order - Logos Coffee</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+    <title>Mulai Pesanan - Logos Coffee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-            display: flex;
-        }
-
-        /* ══ SPLIT LAYOUT ══ */
-        .split-left {
-            flex: 2;
-            order: 1;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: flex-end;
-            padding: 3rem;
-            min-height: 280px;
-        }
-        .split-right {
-            flex: 1;
-            order: 2;
-            min-width: 360px;
-            max-width: 460px;
-            background: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 3rem 2.5rem;
-            overflow-y: auto;
-        }
-
-        /* ── Left Panel Background ── */
-        .left-bg {
-            position: absolute;
-            inset: 0;
-            background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            transform: scale(1.03);
-            transition: transform 8s ease;
-        }
-        .split-left:hover .left-bg { transform: scale(1); }
-        .left-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(160deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.75) 100%);
-        }
-        .left-content {
-            position: relative;
-            z-index: 10;
-            color: #fff;
-        }
-        .left-eyebrow {
-            font-size: 0.65rem;
-            letter-spacing: 0.35em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.55);
-            font-weight: 600;
-            margin-bottom: 0.75rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .left-eyebrow::before {
-            content: '';
-            display: inline-block;
-            width: 24px;
-            height: 1px;
-            background: rgba(255,255,255,0.4);
-        }
-        .left-title {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 700;
-            line-height: 1.15;
-            margin-bottom: 1rem;
-        }
-        .left-title em { font-style: italic; }
-        .left-tagline {
-            font-size: 0.8rem;
-            color: rgba(255,255,255,0.5);
-            letter-spacing: 0.1em;
-        }
-
-        /* ── Right Panel ── */
-        .right-logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom: 3rem;
-            text-decoration: none;
-        }
-        .logo-circle {
-            width: 36px; height: 36px;
-            background: #111;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            flex-shrink: 0;
-        }
-        .logo-circle span {
-            font-family: 'Playfair Display', serif;
-            font-size: 0.85rem;
-            color: #fff;
-            font-weight: 700;
-            font-style: italic;
-        }
-        .logo-text {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: #111;
-        }
-
-        .form-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 700;
-            color: #111;
-            margin-bottom: 0.4rem;
-            line-height: 1.2;
-        }
-        .form-subheading {
-            font-size: 0.82rem;
-            color: #aaa;
-            margin-bottom: 2.5rem;
-        }
-
-        /* ── Form Elements ── */
-        .form-group { margin-bottom: 1.25rem; }
-        .form-label {
-            display: block;
-            font-size: 0.62rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #999;
-            margin-bottom: 7px;
-        }
-        .form-input {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            background: #fafafa;
-            border: 1px solid #e8e8e8;
-            border-radius: 10px;
-            font-size: 0.95rem;
-            font-family: 'Inter', sans-serif;
-            color: #111;
-            font-weight: 500;
-            transition: border-color 0.2s, background 0.2s;
-            outline: none;
-        }
-        .form-input:focus {
-            border-color: #111;
-            background: #fff;
-        }
-        .form-input::placeholder { color: #ccc; font-weight: 400; }
-
-        .submit-btn {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            background: #111;
-            color: #fff;
-            border: none;
-            border-radius: 12px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.15s;
-            margin-top: 0.75rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .submit-btn:hover { background: #2a2a2a; }
-        .submit-btn:active { transform: scale(0.98); }
-
-        .form-footer {
-            margin-top: 2rem;
-            font-size: 0.72rem;
-            color: #ccc;
-            text-align: center;
-        }
-        .form-footer a {
-            color: #999;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        .form-footer a:hover { color: #111; }
-
-        /* ── Responsive ── */
-        @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .split-left {
-                min-height: 260px;
-                padding: 2rem;
-                align-items: flex-end;
-            }
-            .left-title { font-size: 2rem; }
-            .split-right {
-                max-width: 100%;
-                padding: 2.5rem 1.5rem;
-            }
-        }
+        body { font-family: 'Inter', sans-serif; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        /* Hide number input arrows */
+        input[type=number]::-webkit-inner-spin-button, 
+        input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     </style>
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col items-center justify-center relative overflow-hidden sm:p-6 p-0">
 
-    {{-- ══ RIGHT PANEL (form) ══ --}}
-    <div class="split-right">
-        {{-- Logo --}}
-        <a href="{{ url('/') }}" class="right-logo">
-            <div class="logo-circle"><span>LC</span></div>
-            <span class="logo-text">Logos Coffee</span>
-        </a>
-
-        {{-- Heading --}}
-        <h2 class="form-heading">Mulai Pesanan<br>Anda</h2>
-        <p class="form-subheading">Isi data di bawah untuk melanjutkan ke menu</p>
-
-        {{-- Form --}}
-        <form action="{{ route('self-order.info.store') }}" method="POST">
-            @csrf
-
-            <div class="form-group">
-                <label class="form-label" for="table_number">Nomor Meja</label>
-                <input
-                    class="form-input"
-                    type="number"
-                    name="table_number"
-                    id="table_number"
-                    value="{{ old('table_number', $table) }}"
-                    required
-                    placeholder="Contoh: 05"
-                >
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="customer_name">Nama Lengkap</label>
-                <input
-                    class="form-input"
-                    type="text"
-                    name="customer_name"
-                    id="customer_name"
-                    required
-                    placeholder="Nama Anda"
-                >
-            </div>
-
-            <div class="form-group">
-                <label class="form-label" for="customer_phone">
-                    No. HP &nbsp;<span style="color:#ddd; font-weight:400; letter-spacing:normal; text-transform:none;">Opsional</span>
-                </label>
-                <input
-                    class="form-input"
-                    type="tel"
-                    name="customer_phone"
-                    id="customer_phone"
-                    placeholder="08xxxxxx"
-                >
-            </div>
-
-            <button type="submit" class="submit-btn">
-                Lanjut ke Menu
-                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
-                </svg>
-            </button>
-        </form>
-
-        <p class="form-footer">
-            Dengan memesan, Anda menyetujui <a href="#">syarat & ketentuan</a> kami.
-        </p>
+    {{-- Background Image for larger screens --}}
+    <div class="fixed inset-0 z-0 hidden sm:block">
+        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=2047&auto=format&fit=crop" alt="Coffee Background" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black/40 backdrop-blur-sm"></div>
     </div>
 
-    {{-- ══ LEFT PANEL (image) ══ --}}
-    <div class="split-left">
-        <div class="left-bg"></div>
-        <div class="left-overlay"></div>
-        <div class="left-content">
-            <p class="left-eyebrow">Est. 2024</p>
-            <h1 class="left-title">
-                Welcome to<br>
-                <em>Logos Coffee</em>
-            </h1>
-            <p class="left-tagline">Brewing Excellence, One Cup at a Time</p>
+    {{-- Form Container --}}
+    <div class="relative z-10 w-full max-w-md bg-white sm:rounded-[2.5rem] rounded-none shadow-2xl overflow-hidden min-h-screen sm:min-h-0 flex flex-col">
+        
+        {{-- Hero Header --}}
+        <div class="relative h-64 sm:h-56 bg-black flex flex-col justify-end p-8 overflow-hidden shrink-0">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?q=80&w=800&auto=format&fit=crop" class="absolute inset-0 w-full h-full object-cover opacity-40">
+            <div class="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>
+            
+            
+            <div class="relative z-10 flex flex-col h-full">
+                <!-- Back Button -->
+                <a href="{{ auth()->check() ? (auth()->user()->role === 'owner' ? url('/owner') : (auth()->user()->role === 'admin' ? url('/admin') : url('/cashier'))) : url('/') }}" class="self-start w-10 h-10 bg-white/20 hover:bg-white/30 backdrop-blur-md rounded-full flex items-center justify-center text-white transition-colors mb-auto border border-white/20">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+                </a>
+                
+                <div class="mt-auto">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black font-playfair font-bold text-lg leading-none">LC</div>
+                        <span class="text-white/80 text-xs font-bold tracking-[0.2em] uppercase">Logos Coffee</span>
+                    </div>
+                    <h1 class="text-white font-playfair text-3xl font-bold leading-tight">Mulai<br>Pesanan Anda</h1>
+                </div>
+            </div>
+        </div>
+
+        {{-- Form Content --}}
+        <div class="p-8 pb-12 flex-1 flex flex-col">
+            <p class="text-sm font-medium text-gray-500 mb-8">Silakan lengkapi data di bawah ini untuk melihat menu dan memulai pesanan.</p>
+
+            @if ($errors->any())
+                <div class="mb-6 p-4 rounded-2xl bg-red-50 border border-red-100 text-red-600 text-sm font-medium">
+                    <ul class="list-disc list-inside space-y-1">
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            <form action="{{ route('self-order.info.store') }}" method="POST" class="space-y-5 flex-1 flex flex-col">
+                @csrf
+                
+                {{-- Field: No Meja --}}
+                <div class="space-y-1.5">
+                    <label for="table_number" class="block text-[11px] font-black tracking-[0.15em] text-gray-400 uppercase">Nomor Meja <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                        </div>
+                        <input type="number" name="table_number" id="table_number" value="{{ old('table_number', $table) }}" required
+                            pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            class="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-base font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all placeholder:text-gray-400 placeholder:font-medium"
+                            placeholder="Contoh: 5">
+                    </div>
+                    <p class="text-xs text-gray-400 font-medium ml-1">Hanya angka yang diperbolehkan.</p>
+                </div>
+
+                {{-- Field: Nama Pelanggan --}}
+                <div class="space-y-1.5">
+                    <label for="customer_name" class="block text-[11px] font-black tracking-[0.15em] text-gray-400 uppercase">Nama Panggilan <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                        </div>
+                        <input type="text" name="customer_name" id="customer_name" value="{{ old('customer_name') }}" required
+                            class="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-base font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all placeholder:text-gray-400 placeholder:font-medium"
+                            placeholder="Ketik nama Anda">
+                    </div>
+                </div>
+
+                {{-- Field: No. HP --}}
+                <div class="space-y-1.5">
+                    <label for="customer_phone" class="block text-[11px] font-black tracking-[0.15em] text-gray-400 uppercase">Nomor HP/WhatsApp <span class="text-red-500">*</span></label>
+                    <div class="relative">
+                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                            <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                        </div>
+                        <input type="tel" name="customer_phone" id="customer_phone" value="{{ old('customer_phone') }}" required
+                            pattern="[0-9]*" oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                            class="w-full pl-11 pr-4 py-3.5 bg-gray-50 border border-gray-200 rounded-2xl text-base font-bold text-gray-900 focus:bg-white focus:ring-2 focus:ring-black focus:border-transparent outline-none transition-all placeholder:text-gray-400 placeholder:font-medium"
+                            placeholder="08xxxxxxxxxx">
+                    </div>
+                    <p class="text-xs text-gray-400 font-medium ml-1">Hanya angka yang diperbolehkan.</p>
+                </div>
+
+                <div class="mt-auto pt-8">
+                    <button type="submit" class="w-full py-4 bg-black text-white text-base font-black rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-all shadow-xl shadow-black/20 hover:-translate-y-0.5 active:translate-y-0">
+                        Lanjut ke Menu
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </button>
+                    <p class="text-center text-xs text-gray-400 font-medium mt-4">
+                        Dengan melanjutkan, Anda menyetujui kebijakan Logos Coffee.
+                    </p>
+                </div>
+            </form>
         </div>
     </div>
-
 </body>
 </html>

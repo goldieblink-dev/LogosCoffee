@@ -1,289 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
     <title>Pembayaran - Logos Coffee</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            background: #fafafa;
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
-        }
-
-        /* ══ HEADER ══ */
-        .site-header {
-            background: #111;
-            padding: 0.9rem 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        .header-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: #fff;
-        }
-
-        /* ══ CONTENT ══ */
-        .page-wrap {
-            max-width: 480px;
-            margin: 0 auto;
-            padding: 2rem 1.25rem 3rem;
-        }
-
-        /* ── Step indicator ── */
-        .step-indicator {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            margin-bottom: 2rem;
-        }
-        .step-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: #ddd;
-        }
-        .step-dot.active {
-            background: #111;
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        /* ── Page heading ── */
-        .page-heading {
-            text-align: center;
-            margin-bottom: 2rem;
-        }
-        .page-eyebrow {
-            font-size: 0.62rem;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: #aaa;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-        .page-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: #111;
-        }
-        .page-sub {
-            font-size: 0.82rem;
-            color: #999;
-            margin-top: 6px;
-        }
-
-        /* ── QRIS Card ── */
-        .qris-card {
-            background: #fff;
-            border: 1px solid #ebebeb;
-            border-radius: 20px;
-            padding: 1.75rem;
-            text-align: center;
-            margin-bottom: 1.25rem;
-        }
-        .qris-frame {
-            display: inline-block;
-            border: 2px dashed #e0e0e0;
-            border-radius: 16px;
-            padding: 1rem;
-            background: #fafafa;
-            margin-bottom: 1rem;
-        }
-        .qris-frame img {
-            width: 180px; height: 180px;
-            display: block;
-            border-radius: 8px;
-        }
-        .qris-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            background: #111;
-            color: #fff;
-            border-radius: 20px;
-            padding: 6px 14px;
-            font-size: 0.78rem;
-            font-weight: 700;
-            letter-spacing: 0.1em;
-        }
-        .qris-badge svg { opacity: 0.7; }
-
-        /* ── Order Info Card ── */
-        .info-card {
-            background: #fff;
-            border: 1px solid #ebebeb;
-            border-radius: 20px;
-            padding: 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-        .info-card-label {
-            font-size: 0.62rem;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: #bbb;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.6rem 0;
-            border-bottom: 1px solid #f5f5f5;
-            font-size: 0.875rem;
-        }
-        .info-row:last-child { border-bottom: none; }
-        .info-row-label { color: #999; }
-        .info-row-value { font-weight: 700; color: #111; }
-
-        /* ── Total ── */
-        .total-strip {
-            background: #111;
-            border-radius: 16px;
-            padding: 1.1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.25rem;
-        }
-        .total-label {
-            font-size: 0.78rem;
-            color: rgba(255,255,255,0.5);
-            font-weight: 600;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-        }
-        .total-amount {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        /* ── Button ── */
-        .pay-btn {
-            width: 100%;
-            padding: 1rem;
-            background: #fff;
-            color: #111;
-            border: 2px solid #111;
-            border-radius: 14px;
-            font-family: 'Inter', sans-serif;
-            font-size: 0.9rem;
-            font-weight: 700;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            transition: background 0.2s, color 0.2s;
-        }
-        .pay-btn:hover {
-            background: #111;
-            color: #fff;
-        }
-        .pay-note {
-            font-size: 0.72rem;
-            color: #ccc;
-            text-align: center;
-            margin-top: 1rem;
-            line-height: 1.6;
-        }
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .font-playfair { font-family: 'Playfair Display', serif; }
+        .pb-safe { padding-bottom: env(safe-area-inset-bottom); }
     </style>
 </head>
-<body>
+<body class="text-gray-900 min-h-screen flex flex-col">
 
-    {{-- ══ HEADER ══ --}}
-    <header class="site-header">
-        <span class="header-brand">Logos Coffee</span>
+    {{-- HEADER --}}
+    <header class="bg-white/80 backdrop-blur-md border-b border-gray-100 shadow-sm sticky top-0 z-40">
+        <div class="max-w-md mx-auto px-4 h-16 flex items-center justify-center relative">
+            <a href="javascript:history.back()" class="absolute left-4 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 hover:bg-gray-200 transition-colors">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+            </a>
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-black rounded-full flex items-center justify-center text-white font-playfair font-bold text-sm">LC</div>
+                <span class="font-playfair font-bold text-lg tracking-tight">Pembayaran</span>
+            </div>
+        </div>
     </header>
 
-    <div class="page-wrap">
-
-        {{-- Step indicator --}}
-        <div class="step-indicator">
-            <div class="step-dot"></div>
-            <div class="step-dot"></div>
-            <div class="step-dot active"></div>
+    {{-- MAIN CONTENT --}}
+    <main class="flex-1 max-w-md mx-auto w-full px-4 py-8 flex flex-col">
+        
+        {{-- Step Indicator --}}
+        <div class="flex items-center justify-center gap-2 mb-8">
+            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div class="w-2 h-2 rounded-full bg-gray-300"></div>
+            <div class="w-6 h-2 rounded-full bg-black"></div>
         </div>
 
-        {{-- Heading --}}
-        <div class="page-heading">
-            <p class="page-eyebrow">Langkah Terakhir</p>
-            <h1 class="page-title">Selesaikan Pembayaran</h1>
-            <p class="page-sub">Scan QRIS di bawah ini untuk membayar</p>
+        <div class="text-center mb-8">
+            <h1 class="font-playfair text-2xl font-bold text-gray-900 mb-2">Scan QRIS</h1>
+            <p class="text-sm text-gray-500 font-medium">Buka aplikasi m-banking atau e-wallet Anda dan scan kode QR di bawah ini.</p>
         </div>
 
-        {{-- QRIS --}}
-        <div class="qris-card">
-            <div class="qris-frame">
-                <img
-                    src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=LOGOSCOFFEE-ORDER-{{ $order->id }}"
-                    alt="QRIS Logos Coffee"
-                >
+        {{-- QRIS Card --}}
+        <div class="bg-white rounded-[2.5rem] shadow-xl shadow-gray-200/50 border border-gray-100 p-8 mb-6 flex flex-col items-center relative overflow-hidden">
+            <div class="absolute top-0 inset-x-0 h-2 bg-gradient-to-r from-blue-500 via-sky-400 to-blue-500"></div>
+            
+            <div class="flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full mb-6">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+                <span class="text-xs font-black tracking-widest uppercase">QRIS Verified</span>
             </div>
-            <div class="qris-badge">
-                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 11V7m0 4v4m0 0h4m-4 0H8m0-9a4 4 0 118 0v2H8V7z"/>
-                </svg>
-                QRIS &nbsp;·&nbsp; Logos Coffee
+
+            <div class="bg-white border-2 border-dashed border-gray-200 p-4 rounded-3xl mb-4">
+                <img src="https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=LOGOSCOFFEE-ORDER-{{ $order->id }}" alt="QRIS" class="w-48 h-48 sm:w-56 sm:h-56 object-contain rounded-xl">
+            </div>
+
+            <p class="text-2xl font-black text-gray-900 tracking-tighter mb-1">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</p>
+            <p class="text-[10px] font-bold text-gray-400 tracking-widest uppercase">Total Tagihan</p>
+        </div>
+
+        {{-- Order Summary --}}
+        <div class="bg-white rounded-3xl border border-gray-100 p-6 mb-8 shadow-sm">
+            <h3 class="text-[11px] font-black tracking-widest uppercase text-gray-400 mb-4 pb-2 border-b border-gray-100">Ringkasan Pesanan</h3>
+            
+            <div class="space-y-3">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-500 font-medium">Order ID</span>
+                    <span class="font-bold text-gray-900 tracking-wider">#LC-{{ str_pad($order->id, 5, '0', STR_PAD_LEFT) }}</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-500 font-medium">Pelanggan</span>
+                    <span class="font-bold text-gray-900">{{ $order->customer_name }}</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-gray-500 font-medium">Nomor Meja</span>
+                    <span class="w-8 h-8 bg-black text-white rounded-lg flex items-center justify-center font-black text-xs">{{ $order->table_number }}</span>
+                </div>
             </div>
         </div>
 
-        {{-- Order Info --}}
-        <div class="info-card">
-            <p class="info-card-label">Ringkasan Order</p>
-            <div class="info-row">
-                <span class="info-row-label">Order ID</span>
-                <span class="info-row-value" style="font-family:monospace; font-size:0.82rem;">#LOGOS-{{ str_pad($order->id, 5, '0', STR_PAD_LEFT) }}</span>
-            </div>
-            <div class="info-row">
-                <span class="info-row-label">Nomor Meja</span>
-                <span class="info-row-value">{{ $order->table_number }}</span>
-            </div>
-            <div class="info-row">
-                <span class="info-row-label">Nama</span>
-                <span class="info-row-value">{{ $order->customer_name }}</span>
-            </div>
+        {{-- Action Button --}}
+        <div class="mt-auto pb-safe">
+            <form action="{{ route('self-order.payment.process', $order) }}" method="POST">
+                @csrf
+                <button type="submit" class="w-full py-4 bg-black text-white text-base font-black rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-800 transition-all shadow-xl shadow-black/20 hover:-translate-y-0.5 active:translate-y-0">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    Saya Sudah Membayar
+                </button>
+            </form>
+            <p class="text-center text-xs text-gray-400 font-medium mt-4">
+                Sistem akan memverifikasi pembayaran Anda secara otomatis.
+            </p>
         </div>
 
-        {{-- Total --}}
-        <div class="total-strip">
-            <span class="total-label">Total</span>
-            <span class="total-amount">Rp {{ number_format($order->total_amount, 0, ',', '.') }}</span>
-        </div>
-
-        {{-- Confirm --}}
-        <form action="{{ route('self-order.payment.process', $order) }}" method="POST">
-            @csrf
-            <button type="submit" class="pay-btn">
-                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/>
-                </svg>
-                Saya Sudah Bayar
-            </button>
-        </form>
-
-        <p class="pay-note">Sistem akan memverifikasi pembayaran Anda secara otomatis.<br>Jangan tinggalkan halaman ini sebelum konfirmasi.</p>
-
-    </div>
-
+    </main>
 </body>
 </html>
