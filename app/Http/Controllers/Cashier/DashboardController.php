@@ -11,6 +11,10 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('cashier.dashboard');
+        $todaySales = Order::daily()->whereIn('status', ['paid', 'completed'])->sum('total_amount');
+        $todayOrders = Order::daily()->count();
+        $availableProducts = Product::where('is_available', true)->count();
+
+        return view('cashier.dashboard', compact('todaySales', 'todayOrders', 'availableProducts'));
     }
 }

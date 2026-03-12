@@ -10,7 +10,10 @@ class OrderController extends Controller
 {
     public function index()
     {
-        $orders = Order::with('items.product')->latest()->get();
+        $orders = Order::with('items.product')
+            ->where('status', '!=', 'pending')
+            ->latest()
+            ->get();
         return view('cashier.orders.index', compact('orders'));
     }
 

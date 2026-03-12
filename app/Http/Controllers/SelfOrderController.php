@@ -50,8 +50,8 @@ class SelfOrderController extends Controller
 
     public function checkout(Request $request)
     {
-        $cart = $request->cart; // Expecting array of {id, quantity}
-        if (empty($cart)) {
+        $cart = $request->cart; // Array of {id => {id, quantity}} from the hidden inputs
+        if (empty($cart) || !is_array($cart)) {
             return back()->with('error', 'Keranjang masih kosong.');
         }
 
@@ -59,11 +59,11 @@ class SelfOrderController extends Controller
         $total = 0;
         $items = [];
 
-        foreach ($cart as $item) {
-            if (!isset($item['id']) || !isset($item['quantity']))
+        foreach ($cart as $id => $item) {
+            if (!isset($item['quantity']))
                 continue;
 
-            $product = Product::find($item['id']);
+            $product = Product::find($id);
             if ($product) {
                 $price = $product->promo_price ?? $product->price;
                 $lineTotal = $price * $item['quantity'];

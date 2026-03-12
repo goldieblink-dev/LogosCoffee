@@ -6,11 +6,11 @@
 <div class="space-y-8">
     <!-- Period Selector -->
     <div class="flex items-center gap-2 p-1 bg-gray-100 rounded-xl w-fit">
-        <a href="{{ route('reports.sales', ['period' => 'daily']) }}"
+        <a href="{{ route('cashier.reports.sales', ['period' => 'daily']) }}"
             class="px-6 py-2 rounded-lg text-sm font-bold transition-all {{ $period == 'daily' ? 'bg-white text-black shadow-sm' : 'text-gray-500 hover:text-black' }}">Harian</a>
-        <a href="{{ route('reports.sales', ['period' => 'weekly']) }}"
+        <a href="{{ route('cashier.reports.sales', ['period' => 'weekly']) }}"
             class="px-6 py-2 rounded-lg text-sm font-bold transition-all {{ $period == 'weekly' ? 'bg-white text-black shadow-sm' : 'text-gray-500 hover:text-black' }}">Mingguan</a>
-        <a href="{{ route('reports.sales', ['period' => 'monthly']) }}"
+        <a href="{{ route('cashier.reports.sales', ['period' => 'monthly']) }}"
             class="px-6 py-2 rounded-lg text-sm font-bold transition-all {{ $period == 'monthly' ? 'bg-white text-black shadow-sm' : 'text-gray-500 hover:text-black' }}">Bulanan</a>
     </div>
 

@@ -11,7 +11,11 @@ use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\ReportController;
 
 Route::get('/', function () {
-    return view('welcome');
+    $categories = \App\Models\Category::has('products')
+        ->with(['products' => function($query) {
+        }])->get();
+
+    return view('welcome', compact('categories'));
 });
 
 // Authentication Routes
@@ -61,7 +65,7 @@ Route::middleware(['auth', 'role:cashier'])->prefix('cashier')->name('cashier.')
     Route::get('/orders/{order}', [\App\Http\Controllers\Cashier\OrderController::class , 'show'])->name('orders.show');
     Route::put('/orders/{order}', [\App\Http\Controllers\Cashier\OrderController::class , 'update'])->name('orders.update');
 
-    Route::get('/reports/sales', [\App\Http\Controllers\Admin\ReportController::class , 'sales'])->name('reports.sales');
+    Route::get('/reports/sales', [\App\Http\Controllers\Cashier\ReportController::class , 'sales'])->name('reports.sales');
 });
 
 // Owner Routes (Restricted to Owner)

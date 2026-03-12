@@ -3,211 +3,311 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <title>Logos Coffe - Premium Coffee Experience</title>
+        <title>Logos Coffee - Premium Coffee Experience</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 
         <!-- Styles / Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        
+
         <style>
-            @keyframes fade-in {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
+            /* ── Hero ── */
+            .hero-section {
+                position: relative;
+                min-height: 90vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                overflow: hidden;
+                background: #111;
             }
-            .animate-fade-in {
-                animation: fade-in 1s ease-out forwards;
+            .hero-bg {
+                position: absolute;
+                inset: 0;
+                background-image: url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1600&q=80');
+                background-size: cover;
+                background-position: center;
+                opacity: 0.45;
+                transform: scale(1.05);
+                transition: transform 8s ease;
+            }
+            .hero-section:hover .hero-bg {
+                transform: scale(1);
+            }
+            .hero-overlay {
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+            }
+            .hero-content {
+                position: relative;
+                z-index: 10;
+                color: #fff;
+                padding: 2rem;
+            }
+
+            /* ── Animations ── */
+            @keyframes fade-up {
+                from { opacity: 0; transform: translateY(30px); }
+                to   { opacity: 1; transform: translateY(0); }
+            }
+            .anim-1 { animation: fade-up 0.9s ease forwards; }
+            .anim-2 { animation: fade-up 0.9s 0.2s ease both; }
+            .anim-3 { animation: fade-up 0.9s 0.4s ease both; }
+            .anim-4 { animation: fade-up 0.9s 0.6s ease both; }
+
+            /* ── Divider ── */
+            .ornament-line {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                justify-content: center;
+                margin-bottom: 1.5rem;
+            }
+            .ornament-line span {
+                display: block;
+                width: 50px;
+                height: 1px;
+                background: rgba(255,255,255,0.4);
+            }
+            .ornament-line i {
+                font-size: 10px;
+                letter-spacing: 0.3em;
+                text-transform: uppercase;
+                color: rgba(255,255,255,0.6);
+                font-style: normal;
+            }
+
+            /* ── Info Bar ── */
+            .info-bar-item {
+                flex: 1;
+                padding: 2rem 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                border-right: 1px solid #e5e5e5;
+            }
+            .info-bar-item:last-child { border-right: none; }
+
+            /* ── Product Item ── */
+            .product-row {
+                display: flex;
+                justify-content: space-between;
+                align-items: baseline;
+                padding: 1rem 0;
+                border-bottom: 1px solid #f0f0f0;
+                transition: all 0.2s;
+            }
+            .product-row:last-child { border-bottom: none; }
+            .product-row:hover { padding-left: 6px; }
+
+            /* ── CTA Button ── */
+            .cta-btn {
+                display: inline-block;
+                padding: 0.85rem 2.5rem;
+                border: 1.5px solid rgba(255,255,255,0.8);
+                color: #fff;
+                font-size: 0.8rem;
+                letter-spacing: 0.25em;
+                text-transform: uppercase;
+                font-weight: 600;
+                font-family: 'Inter', sans-serif;
+                transition: all 0.3s;
+                cursor: pointer;
+                background: transparent;
+                text-decoration: none;
+            }
+            .cta-btn:hover {
+                background: #fff;
+                color: #111;
+            }
+
+            /* ── Section Title ── */
+            .section-eyebrow {
+                font-size: 0.7rem;
+                letter-spacing: 0.35em;
+                text-transform: uppercase;
+                color: #999;
+                margin-bottom: 0.75rem;
+                font-family: 'Inter', sans-serif;
             }
         </style>
     </head>
-    <body class="selection:bg-black selection:text-white bg-coffee-dark text-cream font-body antialiased">
-        
-        <!-- Header Section -->
-        <header class="pt-12 pb-16 text-center animate-fade-in">
-            <div class="mx-auto w-24 h-24 bg-black rounded-full flex items-center justify-center mb-4 shadow-2xl shadow-black/10">
-                <span class="font-heading text-4xl text-coffee-dark font-bold italic tracking-tighter">LC</span>
+    <body style="background:#fff; color:#1a1a1a; font-family:'Inter',sans-serif; margin:0;">
+
+        {{-- ══════════════════ NAVBAR ══════════════════ --}}
+        <nav id="main-navbar" style="
+            position: sticky; top: 0; z-index: 50;
+            width: 100%;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #ebebeb;
+            transition: transform 0.35s ease, opacity 0.35s ease, box-shadow 0.35s ease;
+        ">
+            <div style="max-width:1200px; margin:0 auto; padding: 1rem 1.25rem; display:flex; align-items:center; justify-content:center; position:relative;">
+                <p style="font-family:'Playfair Display',serif; font-size:clamp(0.85rem, 3vw, 1.5rem); font-weight:700; letter-spacing:0.2em; text-transform:uppercase; color:#111; margin:0; white-space:nowrap;">
+                    ~ ~ &nbsp; Logos Coffee &nbsp; ~ ~
+                </p>
             </div>
-            <h1 class="text-5xl md:text-6xl font-heading font-bold tracking-tight text-gold">Logos Coffe</h1>
-            <p class="text-cream/60 mt-2 tracking-widest uppercase text-sm font-medium">Brewing Excellence Since 2024</p>
-        </header>
+        </nav>
+        <script>
+            (function () {
+                var nav = document.getElementById('main-navbar');
+                var lastY = 0;
+                window.addEventListener('scroll', function () {
+                    var y = window.scrollY;
+                    if (y > 60 && y > lastY) {
+                        nav.style.transform = 'translateY(-100%)';
+                        nav.style.opacity = '0';
+                    } else {
+                        nav.style.transform = 'translateY(0)';
+                        nav.style.opacity = '1';
+                        nav.style.boxShadow = y > 10 ? '0 2px 20px rgba(0,0,0,0.07)' : 'none';
+                    }
+                    lastY = y;
+                });
+            })();
+        </script>
 
-        <main class="max-w-6xl mx-auto px-6 pb-24">
-            
-            <!-- Info & Promo Section -->
-            <section class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20 animate-fade-in" style="animation-delay: 0.2s;">
-                <!-- Info Bar -->
-                <div class="lg:col-span-2 glass-card flex flex-col md:flex-row justify-between items-center gap-8">
-                    <div class="flex items-center gap-4 border-r border-black/10 md:pr-8 last:border-0 h-full">
-                        <div class="bg-black/5 p-3 rounded-full">
-                            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-gold font-bold uppercase text-xs tracking-wider">Jam Operasional</h3>
-                            <p class="text-cream/80 text-lg">08:00 - 22:00 WIB</p>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-4 flex-1">
-                        <div class="bg-black/5 p-3 rounded-full">
-                            <svg class="w-6 h-6 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        </div>
-                        <div>
-                            <h3 class="text-gold font-bold uppercase text-xs tracking-wider">Lokasi</h3>
-                            <p class="text-cream/80 leading-snug">Jl. Kopi No. 123, Pusat Kota, Indonesia</p>
-                        </div>
-                    </div>
+        {{-- ══════════════════ HERO ══════════════════ --}}
+        <section class="hero-section">
+            <div class="hero-bg"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <div class="ornament-line anim-1">
+                    <span></span><i>Est. 2024</i><span></span>
                 </div>
+                <h1 class="anim-2" style="font-family:'Playfair Display',serif; font-size:clamp(3rem,8vw,6.5rem); font-weight:700; line-height:1.1; margin:0 0 1.5rem; letter-spacing:-0.01em;">
+                    The Art of<br><em>Coffee</em>
+                </h1>
+                <p class="anim-3" style="font-size:0.9rem; letter-spacing:0.2em; text-transform:uppercase; color:rgba(255,255,255,0.65); margin-bottom:2.5rem; font-weight:400;">
+                    Brewing Excellence Since 2024
+                </p>
+                <a href="{{ route('self-order.index') }}" class="cta-btn anim-4">Order Now</a>
+            </div>
+        </section>
 
-                <!-- Promo Box -->
-                <div class="promo-card group cursor-pointer">
-                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-black rounded-full blur-3xl opacity-5 group-hover:opacity-10 transition-opacity"></div>
-                    <div class="relative z-10 h-full flex flex-col justify-between">
-                        <div>
-                            <span class="bg-gold text-coffee-dark px-2 py-1 rounded text-xs font-black uppercase mb-2 inline-block">Special Offer</span>
-                            <h2 class="text-3xl font-heading font-bold mb-2">Buy 1 Get 1 Free!</h2>
-                            <p class="text-cream/70 text-sm">Berlaku untuk semua varian Espresso setiap hari Jumat pukul 14:00 - 17:00.</p>
-                        </div>
-                        <button class="btn-gold mt-6 w-full text-sm">Cek Promo Lainnya</button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Menu Section -->
-            <section class="mb-20 animate-fade-in" style="animation-delay: 0.4s;">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-heading font-bold text-gold inline-block border-b-2 border-black/10 pb-4">Our Curated Menu</h2>
-                </div>
-
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16">
-                    
-                    <!-- Kategori 1 -->
+        <section style="border-bottom:1px solid #ebebeb;">
+            <style>
+                .info-bar-item {
+                    flex: 1;
+                    min-width: 200px;
+                    padding: 1.5rem 1.25rem;
+                    display: flex;
+                    align-items: center;
+                    gap: 1rem;
+                    border-right: 1px solid #e5e5e5;
+                    border-bottom: 1px solid #e5e5e5;
+                }
+                .info-bar-item:last-child { border-right: none; }
+                @media (max-width: 640px) {
+                    .info-bar-item { border-right: none; }
+                }
+            </style>
+            <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap;">
+                <div class="info-bar-item">
+                    <svg style="width:24px;height:24px;flex-shrink:0;color:#999;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     <div>
-                        <h3 class="menu-category-title">Signature Espresso</h3>
-                        <div class="space-y-4">
-                            <div class="product-item group">
-                                <div class="w-16 h-16 bg-black/5 rounded-lg flex-shrink-0 flex items-center justify-center border border-black/10 transition-transform group-hover:scale-110">
-                                    <svg class="w-8 h-8 text-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-lg">Americano Classic</h4>
-                                        <span class="text-gold font-bold">Rp 25.000</span>
-                                    </div>
-                                    <p class="text-cream/50 text-sm leading-relaxed">Ekstraksi biji kopi pilihan dengan air mineral berkualitas tinggi.</p>
-                                </div>
-                            </div>
-                            <div class="product-item border-l-2 border-gold bg-black/5 group">
-                                <div class="w-16 h-16 bg-black/10 rounded-lg flex-shrink-0 flex items-center justify-center transition-transform group-hover:scale-110">
-                                    <svg class="w-8 h-8 text-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14l9-5-9-5-9 5 9 5z"></path></svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-lg">Caramel Macchiato</h4>
-                                        <div class="flex items-center gap-2">
-                                            <span class="bg-gold text-coffee-dark text-[10px] px-1.5 py-0.5 rounded font-black uppercase animate-pulse">Promo</span>
-                                            <span class="text-gold font-bold">Rp 32.000</span>
-                                        </div>
-                                    </div>
-                                    <p class="text-cream/50 text-sm leading-relaxed">Paduan espresso, susu premium, dan saus karamel homemade.</p>
-                                </div>
-                            </div>
-                            <div class="product-item group">
-                                <div class="w-16 h-16 bg-black/5 rounded-lg flex-shrink-0 flex items-center justify-center border border-black/10 transition-transform group-hover:scale-110">
-                                    <svg class="w-8 h-8 text-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 14L2 9l10-5 10 5-10 5z"></path></svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-lg">Caffe Latte</h4>
-                                        <span class="text-gold font-bold">Rp 28.000</span>
-                                    </div>
-                                    <p class="text-cream/50 text-sm leading-relaxed">Susu creamy dengan espresso lembut untuk memulai hari.</p>
-                                </div>
-                            </div>
-                        </div>
+                        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin:0 0 4px;font-weight:600;">Jam Operasional</p>
+                        <p style="font-size:1rem;font-weight:500;color:#111;margin:0;">08:00 – 22:00 WIB</p>
                     </div>
-
-                    <!-- Kategori 2 -->
+                </div>
+                <div class="info-bar-item">
+                    <svg style="width:24px;height:24px;flex-shrink:0;color:#999;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                     <div>
-                        <h3 class="menu-category-title">Manual Brew</h3>
-                        <div class="space-y-4">
-                            <div class="product-item group">
-                                <div class="w-16 h-16 bg-black/5 rounded-lg flex-shrink-0 flex items-center justify-center border border-black/10 transition-transform group-hover:scale-110">
-                                    <svg class="w-8 h-8 text-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 10h4.704a2 2 0 011.94 1.515l.504 2.017A2 2 0 0119.208 16H18a4 4 0 01-1 7.874V24a1 1 0 01-1 1H9a1 1 0 01-1-1v-1.126A4 4 0 017 16H5.792a2 2 0 01-1.94-2.468l.504-2.017A2 2 0 016.296 10H11V7a3 3 0 116 0v3z"></path></svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-lg">V60 Pour Over</h4>
-                                        <span class="text-gold font-bold">Rp 30.000</span>
-                                    </div>
-                                    <p class="text-cream/50 text-sm leading-relaxed">Menonjolkan karakteristik beans single origin pilihan Anda.</p>
-                                </div>
-                            </div>
-                            <div class="product-item group">
-                                <div class="w-16 h-16 bg-black/5 rounded-lg flex-shrink-0 flex items-center justify-center border border-black/10 transition-transform group-hover:scale-110">
-                                    <svg class="w-8 h-8 text-gold/50" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                                </div>
-                                <div class="flex-1">
-                                    <div class="flex justify-between items-baseline mb-1">
-                                        <h4 class="font-bold text-lg">Japanese Iced Coffee</h4>
-                                        <span class="text-gold font-bold">Rp 32.000</span>
-                                    </div>
-                                    <p class="text-cream/50 text-sm leading-relaxed">Seduhan manual yang didinginkan seketika untuk aroma maksimal.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </section>
-
-            <!-- Quote Section -->
-            <section class="py-24 px-6 glass-card text-center mb-20 relative overflow-hidden group animate-fade-in" style="animation-delay: 0.6s;">
-                <div class="absolute -left-12 -top-12 w-48 h-48 bg-black/5 rounded-full blur-3xl group-hover:bg-black/10 transition-colors duration-700"></div>
-                <div class="relative z-10">
-                    <svg class="w-12 h-12 text-gold/20 mx-auto mb-6" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16L19.017 16C19.5693 16 20.017 15.5523 20.017 15L20.017 13C20.017 12.4477 19.5693 12 19.017 12L17.017 12C14.8078 12 13.017 10.2091 13.017 8L13.017 6C13.017 3.79086 14.8079 2 17.017 2L19.017 2C21.2261 2 23.017 3.79086 23.017 6L23.017 12C23.017 16.9706 18.9876 21 14.017 21ZM2.01698 21L2.01698 18C2.01698 16.8954 2.91242 16 4.01698 16L7.01698 16C7.56926 16 8.01698 15.5523 8.01698 15L8.01698 13C8.01698 12.4477 7.56926 12 7.01698 12L5.01698 12C2.80784 12 1.01698 10.2091 1.01698 8L1.01698 6C1.01698 3.79086 2.80784 2 5.01698 2L7.01698 2C9.22612 2 11.017 3.79086 11.017 6L11.017 12C11.017 16.9706 6.98755 21 2.01698 21Z"></path></svg>
-                    <p class="font-heading text-3xl md:text-5xl italic leading-tight text-cream/90 max-w-4xl mx-auto">
-                        "Seteguk Makna di Balik Setiap Logos, Secangkir Kopi yang Menginspirasi Jiwa."
-                    </p>
-                    <div class="mt-8 flex items-center justify-center gap-4">
-                        <div class="h-[1px] w-12 bg-black/10"></div>
-                        <span class="text-gold font-bold tracking-widest uppercase text-xs">Logos Coffe Philosophy</span>
-                        <div class="h-[1px] w-12 bg-black/10"></div>
+                        <p style="font-size:0.65rem;letter-spacing:0.2em;text-transform:uppercase;color:#aaa;margin:0 0 4px;font-weight:600;">Lokasi</p>
+                        <p style="font-size:1rem;font-weight:500;color:#111;margin:0;">Jl. Kopi No. 123, Pusat Kota</p>
                     </div>
                 </div>
-            </section>
+                <div class="info-bar-item" style="background:#111; border-right:none; flex-direction:column; align-items:flex-start; gap:0.5rem;">
+                    <span style="font-size:0.6rem;padding:3px 8px;background:#fff;color:#111;letter-spacing:0.15em;text-transform:uppercase;font-weight:700;">Special Offer</span>
+                    <p style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; color:#fff; margin:0;">Buy 1 Get 1 Free!</p>
+                    <p style="font-size:0.8rem;color:rgba(255,255,255,0.5);margin:0;">Setiap Jumat, pukul 14:00 – 17:00</p>
+                </div>
+            </div>
+        </section>
 
-        </main>
+        {{-- ══════════════════ MENU ══════════════════ --}}
+        <section style="max-width:1200px; margin:0 auto; padding:6rem 2rem;">
+            <div style="text-align:center; margin-bottom:4rem;">
+                <p class="section-eyebrow">What We Serve</p>
+                <h2 style="font-family:'Playfair Display',serif; font-size:clamp(2rem,5vw,3.5rem); font-weight:700; margin:0; letter-spacing:-0.01em;">Our Curated Menu</h2>
+            </div>
 
-        <!-- Footer Section -->
-        <footer class="bg-coffee-muted/50 border-t border-black/5 py-16 px-6 animate-fade-in" style="animation-delay: 0.8s;">
-            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(280px, 100%), 1fr)); gap:3rem 5rem;">
+                @forelse($categories as $category)
                 <div>
-                    <h4 class="text-gold font-heading text-xl mb-6">Lokasi</h4>
-                    <p class="text-cream/60 leading-relaxed italic">
-                        Jl. Kopi No. 123,<br>
-                        Kec. Brewed, Pusat Kota,<br>
-                        Indonesia 10110
-                    </p>
+                    <h3 style="font-family:'Playfair Display',serif; font-size:1.4rem; font-weight:700; margin:0 0 0.25rem; padding-bottom:1rem; border-bottom:2px solid #111;">
+                        {{ $category->name }}
+                    </h3>
+                    @foreach($category->products as $product)
+                    <div class="product-row">
+                        <div style="flex:1; padding-right:1rem;">
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:2px;">
+                                <p style="font-weight:600; font-size:0.95rem; margin:0; color:#111;">{{ $product->name }}</p>
+                                @if($product->promo_price)
+                                <span style="font-size:0.55rem; padding:2px 6px; background:#111; color:#fff; letter-spacing:0.1em; text-transform:uppercase; font-weight:700;">Promo</span>
+                                @endif
+                            </div>
+                            <p style="font-size:0.8rem; color:#999; margin:0;">{{ \Illuminate\Support\Str::limit($product->description, 55) }}</p>
+                        </div>
+                        <div style="text-align:right; white-space:nowrap;">
+                            @if($product->promo_price)
+                            <p style="font-size:0.75rem; color:#bbb; text-decoration:line-through; margin:0;">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                            <p style="font-weight:700; font-size:0.95rem; color:#111; margin:0;">Rp {{ number_format($product->promo_price, 0, ',', '.') }}</p>
+                            @else
+                            <p style="font-weight:600; font-size:0.95rem; color:#111; margin:0;">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+                            @endif
+                        </div>
+                    </div>
+                    @endforeach
                 </div>
-                <div class="text-center md:text-left">
-                    <h4 class="text-gold font-heading text-xl mb-6">Hubungi Kami</h4>
-                    <a href="tel:081234567890" class="text-cream/60 hover:text-gold transition-colors block mb-2 tracking-widest">+62 812 3456 7890</a>
-                    <a href="mailto:hello@logoscoffe.com" class="text-cream/60 hover:text-gold transition-colors block tracking-widest">hello@logoscoffe.com</a>
+                @empty
+                <div style="grid-column:1/-1; text-align:center; padding:4rem 0; color:#bbb;">
+                    <p style="font-style:italic;">Katalog menu sedang dipersiapkan. Segera kembali!</p>
                 </div>
-                <div class="text-right md:text-left lg:text-right">
-                    <h4 class="text-gold font-heading text-xl mb-6">Ikuti Kami</h4>
-                    <div class="flex justify-end md:justify-start lg:justify-end gap-4">
-                        <a href="#" class="w-10 h-10 bg-black/5 flex items-center justify-center rounded-full hover:bg-gold hover:text-coffee-dark transition-all">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                @endforelse
+            </div>
+        </section>
+
+        {{-- ══════════════════ QUOTE ══════════════════ --}}
+        <section style="background:#111; padding:6rem 2rem; text-align:center;">
+            <p style="font-size:0.65rem; letter-spacing:0.35em; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:2rem;">Philosophy</p>
+            <blockquote style="font-family:'Playfair Display',serif; font-size:clamp(1.5rem,4vw,3rem); font-style:italic; color:#fff; max-width:800px; margin:0 auto 2.5rem; line-height:1.4; font-weight:400;">
+                "Seteguk Makna di Balik Setiap Logos, Secangkir Kopi yang Menginspirasi Jiwa."
+            </blockquote>
+            <div style="width:40px; height:1px; background:rgba(255,255,255,0.2); margin:0 auto;"></div>
+        </section>
+
+        {{-- ══════════════════ FOOTER ══════════════════ --}}
+        <footer style="border-top:1px solid #ebebeb; padding:4rem 2rem;">
+            <div style="max-width:1200px; margin:0 auto; display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:3rem; align-items:start;">
+                <div>
+                    <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:700; letter-spacing:0.15em; text-transform:uppercase; margin:0 0 1rem;">Logos Coffee</p>
+                    <p style="font-size:0.85rem; color:#999; line-height:1.7; margin:0;">Jl. Kopi No. 123,<br>Kec. Brewed, Pusat Kota,<br>Indonesia 10110</p>
+                </div>
+                <div>
+                    <p style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; font-weight:700; color:#aaa; margin:0 0 1rem;">Hubungi Kami</p>
+                    <a href="tel:081234567890" style="display:block; font-size:0.9rem; color:#555; text-decoration:none; margin-bottom:0.5rem; transition:color 0.2s;">+62 812 3456 7890</a>
+                    <a href="mailto:hello@logoscoffe.com" style="display:block; font-size:0.9rem; color:#555; text-decoration:none;">hello@logoscoffe.com</a>
+                </div>
+                <div>
+                    <p style="font-size:0.65rem; letter-spacing:0.25em; text-transform:uppercase; font-weight:700; color:#aaa; margin:0 0 1rem;">Ikuti Kami</p>
+                    <div style="display:flex; gap:0.75rem;">
+                        <a href="#" style="width:38px;height:38px;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#555;transition:all 0.2s;text-decoration:none;">
+                            <svg style="width:16px;height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                         </a>
-                        <a href="#" class="w-10 h-10 bg-black/5 flex items-center justify-center rounded-full hover:bg-gold hover:text-coffee-dark transition-all">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                        <a href="#" style="width:38px;height:38px;border:1px solid #e5e5e5;display:flex;align-items:center;justify-content:center;border-radius:50%;color:#555;transition:all 0.2s;text-decoration:none;">
+                            <svg style="width:16px;height:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
                         </a>
                     </div>
-                    <p class="text-cream/30 text-[10px] uppercase tracking-widest mt-12">&copy; 2024 Logos Coffe. All rights reserved.</p>
+                </div>
+                <div style="text-align:right;">
+                    <p style="font-size:0.75rem; color:#ccc; margin:0;">© 2024 Logos Coffee.<br>All rights reserved.</p>
                 </div>
             </div>
         </footer>
