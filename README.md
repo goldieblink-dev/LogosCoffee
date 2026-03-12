@@ -1,3 +1,7 @@
+![Laravel](https://img.shields.io/badge/Laravel-Framework-red)
+![PHP](https://img.shields.io/badge/PHP-Backend-blue)
+![Blade](https://img.shields.io/badge/Blade-Template-orange)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
 # ☕ LogosCoffee — Coffee Shop Website
 
 Modern coffee shop website built to showcase menu, brand identity, and provide a simple ordering interface for customers.
@@ -36,10 +40,28 @@ LogosCoffee is a web-based coffee shop platform designed to:
 
 # 🖥️ Tech Stack
 
-- Frontend
+## Backend
+- PHP
+- Laravel Framework
+
+## Frontend
+- Blade Template Engine
 - HTML5
 - CSS3
 - JavaScript
-- PHP / Laravel
-- Database
-- MySQL / MariaDB
+
+## Database
+- MySQL
+
+# 🧠 Architecture
+
+This project follows the MVC (Model View Controller) architecture used in Laravel.
+
+Model
+Handles database interaction and business logic.
+
+View
+Blade templates used for rendering the user interface.
+
+Controller
+Handles HTTP requests and application logic.
