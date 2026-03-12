@@ -1,3 +1,7 @@
+![Laravel](https://img.shields.io/badge/Laravel-Framework-red)
+![PHP](https://img.shields.io/badge/PHP-Backend-blue)
+![Blade](https://img.shields.io/badge/Blade-Template-orange)
+![MySQL](https://img.shields.io/badge/MySQL-Database-blue)
 # ☕ LogosCoffee
 
 LogosCoffee adalah proyek website coffee shop yang dibangun untuk menampilkan brand, menu kopi, serta pengalaman browsing produk bagi pelanggan. Proyek ini menggunakan pendekatan Laravel Blade templating dengan arsitektur Model–View–Controller (MVC) untuk menjaga struktur kode tetap terorganisir dan mudah dikembangkan.
