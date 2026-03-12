@@ -1,21 +1,8 @@
 @extends('layouts.cashier')
-
-@section('title', 'Cashier Dashboard')
-
+@section('title', 'Dashboard Cashier')
 @section('content')
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-    <div class="bg-white p-6 border border-gray-200 rounded-2xl shadow-sm">
-        <h3 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Penjualan Hari Ini</h3>
-        <p class="text-3xl font-heading font-bold">Rp {{ number_format($todaySales, 0, ',', '.') }}</p>
-    </div>
-    <div class="bg-white p-6 border border-gray-200 rounded-2xl shadow-sm">
-        <h3 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Pesanan Masuk (Hari Ini)</h3>
-        <p class="text-4xl font-heading font-bold">{{ $todayOrders }}</p>
-    </div>
-    <div class="bg-white p-6 border border-gray-200 rounded-2xl shadow-sm">
-        <h3 class="text-gray-400 text-xs font-bold uppercase tracking-wider mb-2">Status Produk</h3>
-        <p class="text-4xl font-heading font-bold">{{ $availableProducts }}</p>
-        <p class="text-[10px] text-gray-500 mt-1 italic">Produk tersedia untuk dipesan</p>
-    </div>
+<div style="padding:2rem; font-family:sans-serif;">
+    <h1>Dashboard Cashier</h1>
+    <p>Halaman ini masih kosong. Silakan mulai membangun!</p>
 </div>
 @endsection
