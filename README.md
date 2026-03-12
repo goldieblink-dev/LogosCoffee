@@ -1,63 +1,122 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# ☕ LogosCoffee
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+LogosCoffee adalah proyek website coffee shop yang dibangun untuk menampilkan brand, menu kopi, serta pengalaman browsing produk bagi pelanggan. Proyek ini menggunakan pendekatan Laravel Blade templating dengan arsitektur Model–View–Controller (MVC) untuk menjaga struktur kode tetap terorganisir dan mudah dikembangkan.
 
-## About Laravel
+## Repository ini dapat digunakan sebagai:
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+- Portfolio project untuk Fullstack / Backend Developer
+- Prototype website untuk bisnis coffee shop
+- Referensi implementasi Laravel Blade architecture
+- Project akademik atau tugas akhir
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+# 📌 Project Overview
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Website LogosCoffee dirancang untuk memberikan tampilan digital bagi coffee shop dengan tujuan:
+- Menampilkan identitas brand coffee shop
+- Menyediakan katalog menu kopi
+- Menyajikan informasi produk
+- Memberikan pengalaman UI yang sederhana dan responsif
+- Struktur proyek menggunakan Blade template engine sehingga tampilan dapat dipisahkan dari logika aplikasi.
 
-## Learning Laravel
+# ✨ Features
+Landing Page
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+Halaman utama website yang menampilkan identitas brand coffee shop.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Fungsi utama:
 
-## Laravel Sponsors
+- Hero section
+- Highlight produk kopi
+- Navigasi ke menu
+- Informasi singkat coffee shop
+- Coffee Menu
+- Halaman yang menampilkan daftar produk kopi.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Informasi yang ditampilkan:
 
-### Premium Partners
+- Nama produk
+- Deskripsi kopi
+- Harga
+- Gambar produk
+- Product Display
+- Setiap produk dapat ditampilkan dengan informasi yang jelas untuk membantu pelanggan mengenal produk.
+- Responsive Design
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+## Website dirancang agar dapat berjalan pada berbagai perangkat:
 
-## Contributing
+- Desktop
+- Tablet
+- Smartphone
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 🖥️ Tech Stack
+## Backend
+- PHP
+- Laravel Framework
 
-## Code of Conduct
+## Frontend
+- Blade Template Engine
+- HTML5
+- CSS3
+- JavaScript
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## Database
+- Database yang direkomendasikan:
+- MySQL
+- MariaDB
 
-## Security Vulnerabilities
+# 🧠 Architecture
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Aplikasi mengikuti pola arsitektur Model–View–Controller (MVC).
 
-## License
+## Model
+- Model bertanggung jawab untuk:
+- Interaksi database
+- Menyimpan logika bisnis
+- Mengambil data produk
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-# kopi
-# project-fnb
-# project-fnb
-# LogosCoffee
+## View
+- View menggunakan Blade templates.
+
+## Tugas utama:
+
+- Menampilkan tampilan UI
+- Menyusun layout halaman
+- Menampilkan data dari controller
+- Controller
+
+## Controller bertugas untuk:
+
+- Mengelola HTTP request
+- Mengambil data dari model
+- Mengirim data ke view
+
+# 📂 Project Structure
+
+## Contoh struktur project:
+```bash
+LogosCoffee
+│
+├── app
+│   ├── Models
+│   └── Http
+│       └── Controllers
+│
+├── resources
+│   └── views
+│       ├── layouts
+│       ├── pages
+│       └── components
+│
+├── public
+│   ├── css
+│   ├── js
+│   └── images
+│
+├── routes
+│   └── web.php
+│
+├── database
+│
+└── README.md
+```
+Penjelasan struktur:
