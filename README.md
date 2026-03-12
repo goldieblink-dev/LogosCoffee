@@ -120,3 +120,135 @@ LogosCoffee
 └── README.md
 ```
 Penjelasan struktur:
+| Folder          | Fungsi                    |
+| --------------- | ------------------------- |
+| app             | Logic aplikasi            |
+| resources/views | Template Blade            |
+| public          | Static assets             |
+| routes          | Routing Laravel           |
+| database        | Migrasi dan seed database |
+
+# 🚀 Installation Guide
+
+## Ikuti langkah berikut untuk menjalankan project secara lokal.
+
+1. Clone Repository
+```bash
+git clone https://github.com/goldieblink-dev/LogosCoffee.git
+```
+Masuk ke folder project:
+```bash
+cd LogosCoffee
+```
+2. Install Dependencies
+```bash
+composer install
+```
+4. Setup Environment
+Copy file environment:
+```bash
+cp .env.example .env
+```
+Generate application key:
+```bash
+php artisan key:generate
+```
+4. Setup Database
+Edit konfigurasi database di file .env.
+Contoh:
+```bash
+DB_DATABASE=logoscoffee
+DB_USERNAME=root
+DB_PASSWORD=
+```
+Jalankan migrasi database:
+```bash
+php artisan migrate
+```
+5. Run Development Server
+```bash
+php artisan serve
+```
+Buka browser dan akses:
+```bash
+http://localhost:8000
+```
+# 📱 UI Design Concept
+
+Desain UI pada LogosCoffee menekankan pada:
+
+- Minimalist coffee shop aesthetic
+- Warm color palette
+- Simple navigation
+- Product-focused layout
+
+Pendekatan ini digunakan agar produk kopi menjadi fokus utama pada tampilan website.
+
+# 🔧 Future Improvements
+
+Project ini dapat dikembangkan lebih lanjut dengan menambahkan fitur berikut.
+
+- Feature Development
+- Online ordering system
+- Shopping cart
+- User authentication
+- Order history
+- Admin dashboard
+
+Backend Enhancement
+
+REST API
+- Product management system
+- Order management system
+- Inventory management
+
+# 🌐 Deployment
+
+Website ini dapat dideploy ke server menggunakan beberapa metode.
+
+VPS Deployment
+Stack yang direkomendasikan:
+
+- Ubuntu Server
+- Nginx
+- PHP-FPM
+- MySQL
+
+## Contoh alur deployment:
+```bash
+GitHub Repository
+        ↓
+VPS Server
+        ↓
+Web Server (Nginx)
+        ↓
+Public Domain
+```
+# 📊 Project Purpose
+
+## Tujuan utama dari proyek ini adalah:
+
+- Demonstrasi kemampuan pengembangan web
+- Implementasi struktur MVC
+- Menjadi prototype website coffee shop
+- Menjadi bagian dari portfolio developer
+
+# 👨‍💻 Author
+
+Rendy Julkifli Usman
+Abian Nurhuda Pratama
+
+Fullstack Developer dengan fokus pada backend engineering dan pengembangan sistem web.
+
+## Area ketertarikan:
+
+- Backend Development
+- Web Architecture
+- DevOps Practices
+- Scalable Web Systems
+
+GitHub:
+```bash
+https://github.com/goldieblink-dev
+https://github.com/AbianNurhuda
+```
